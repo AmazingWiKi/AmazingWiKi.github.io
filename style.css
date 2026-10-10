@@ -57,10 +57,6 @@ body {
     transition: transform 0.05s ease;
 }
 
-body:hover .custom-cursor {
-    transform: scale(1.2);
-}
-
 /* ============================================
    ПРЕЛОАДЕР
    ============================================ */
@@ -239,23 +235,22 @@ body:hover .custom-cursor {
     font-size: clamp(60px, 12vw, 160px);
     font-weight: 900;
     letter-spacing: 6px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-title-inner {
+    display: inline-block;
+    white-space: nowrap;
     background: linear-gradient(135deg, var(--accent), var(--accent-3), var(--accent));
     background-size: 200% 200%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    animation: gradientShift 4s ease infinite;
-    position: relative;
+    animation: gradientShift 4s ease infinite, scrollTitle 7s ease-in-out infinite;
     text-shadow: 0 0 80px var(--glow);
-}
-
-.hero-title::before {
-    content: attr(data-text);
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, transparent, rgba(255, 107, 53, 0.3), transparent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shimmer 3s ease infinite;
 }
 
 @keyframes gradientShift {
@@ -263,9 +258,13 @@ body:hover .custom-cursor {
     50% { background-position: 100% 50%; }
 }
 
-@keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+/* Уезжает вправо → исчезает → появляется слева → возвращается */
+@keyframes scrollTitle {
+    0%   { transform: translateX(0);     opacity: 1; }
+    40%  { transform: translateX(0);     opacity: 1; }
+    65%  { transform: translateX(130%);  opacity: 0; }
+    66%  { transform: translateX(-130%); opacity: 0; }
+    100% { transform: translateX(0);     opacity: 1; }
 }
 
 .hero-subtitle {
@@ -288,14 +287,8 @@ body:hover .custom-cursor {
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================
@@ -327,19 +320,6 @@ body:hover .custom-cursor {
     box-shadow: 0 10px 40px rgba(255, 107, 53, 0.4);
 }
 
-.btn-primary::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, var(--accent-3), var(--accent));
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.btn-primary:hover::before {
-    opacity: 1;
-}
-
 .btn-primary:hover {
     transform: translateY(-5px) scale(1.05);
     box-shadow: 0 20px 60px rgba(255, 107, 53, 0.6);
@@ -347,7 +327,7 @@ body:hover .custom-cursor {
 
 .btn-secondary {
     background: transparent;
-    color:var(--text-primary);
+    color: var(--text-primary);
     border: 2px solid rgba(255, 255, 255, 0.2);
 }
 
@@ -374,9 +354,7 @@ body:hover .custom-cursor {
     animation: fadeInUp 1s ease 0.9s forwards;
 }
 
-.stat {
-    text-align: center;
-}
+.stat { text-align: center; }
 
 .stat-number {
     display: block;
@@ -414,7 +392,7 @@ body:hover .custom-cursor {
 }
 
 /* ============================================
-   GRID
+   GRID "ОБ ИГРЕ"
    ============================================ */
 .about-grid {
     display: grid;
@@ -464,27 +442,313 @@ body:hover .custom-cursor {
 }
 
 /* ============================================
+   СЕРВЕРА
+   ============================================ */
+.servers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.server-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.server-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 107, 53, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.server-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 107, 53, 0.5);
+    box-shadow: 0 20px 50px rgba(255, 107, 53, 0.25);
+}
+
+.server-card:hover::before {
+    opacity: 1;
+}
+
+.server-name {
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, #ff6b35, #ffd700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 1;
+}
+
+.server-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 15px;
+    color: #b0b0c0;
+    position: relative;
+    z-index: 1;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.status-dot.online {
+    background: #3ddc84;
+    box-shadow: 0 0 10px rgba(61, 220, 132, 0.8);
+    animation: pulseOnline 2s infinite;
+}
+
+@keyframes pulseOnline {
+    0%, 100% { box-shadow: 0 0 6px rgba(61, 220, 132, 0.6); }
+    50%      {box-shadow: 0 0 16px rgba(61, 220, 132, 1); }
+}
+
+/* ============================================
+   РАБОТЫ И ПРОФЕССИИ
+   ============================================ */
+.jobs-subtitle {
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 50px 0 30px;
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+.jobs-subtitle:first-of-type {
+    margin-top: 0;
+}
+
+.jobs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+.job-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 32px 26px;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.job-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.job-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(255, 107, 53, 0.4);
+    box-shadow: 0 25px 60px rgba(255, 107, 53, 0.2);
+}
+
+.job-card:hover::after {
+    opacity: 1;
+}
+
+.job-icon {
+    font-size: 44px;
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+    transition: transform 0.4s ease;
+}
+
+.job-card:hover .job-icon {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+.job-card h3 {
+    font-size: 22px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #ffffff;
+    position: relative;
+    z-index: 1;
+}
+
+.job-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: #b0b0c0;
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   НАЧАТЬ ИГРАТЬ
+   ============================================ */
+.start-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.step {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 40px 30px;
+    transition: all 0.4s ease;
+}
+
+.step:hover {
+    transform: translateY(-6px);
+    border-color: rgba(255, 107, 53, 0.4);
+    box-shadow: 0 20px 50px rgba(255, 107, 53, 0.2);
+}
+
+.step-number {
+    display: inline-block;
+    font-size: 42px;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent), var(--accent-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+}
+
+.step h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: #ffffff;
+}
+
+.step p {
+    font-size: 15px;
+    color: #b0b0c0;
+    line-height: 1.6;
+}
+
+/* ============================================
+   ФУТЕР
+   ============================================ */
+.main-footer {
+    padding: 60px 60px 30px;
+    background: rgba(0, 0, 0, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    z-index: 1;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-logo {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.footer-links {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+}
+
+.footer-copy {
+    font-size: 13px;
+    color: #606070;
+}
+
+/* ============================================
    АДАПТИВ
    ============================================ */
 max-width: 768px {
     .main-header {
         padding: 15px 20px;
     }
-    
+
     .main-header nav {
         display: none;
     }
-    
+
     .hero-stats {
         flex-direction: column;
         gap: 30px;
     }
-    
+
     .hero-buttons {
         flex-direction: column;
     }
-    
+
     .section {
         padding: 80px 20px;
+    }
+
+    .servers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .server-name {
+        font-size: 20px;
+    }
+
+    .jobs-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .jobs-subtitle {
+        font-size: 20px;
+    }
+
+    .stat-number {
+        font-size: 36px;
     }
 }
