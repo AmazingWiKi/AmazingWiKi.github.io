@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Об игре AMAZING Online — атмосферная онлайн-игра про современную Россию.">
+    <title>Об игре — AMAZING Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Канвас частиц -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Параллакс-слои -->
+    <div class="parallax-layer" data-speed="0.2"></div>
+    <div class="parallax-layer" data-speed="0.5"></div>
+    <div class="parallax-layer" data-speed="0.8"></div>
+
+    <!-- Курсор -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-dot"></div>
+
+    <!-- Навигация -->
+    <header class="main-header">
+        <div class="logo">
+            <a href="index.html" style="color:#fff;text-decoration:none;font-weight:900;letter-spacing:3px;font-size:20px;">AMAZING Online</a>
+        </div>
+        <nav>
+            <a href="index.html#about">Об игре</a>
+            <a href="index.html#servers">Сервера</a>
+            <a href="index.html#jobs">Работы</a>
+            <a href="index.html#start">Начать играть</a>
+        </nav>
+    </header>
+
+    <!-- Главная секция -->
+    <section class="hero" style="min-height: 60vh;">
+        <h1 class="hero-title" style="font-size: clamp(40px, 8vw, 100px);">
+            <span class="hero-title-inner">ОБ ИГРЕ</span>
+        </h1>
+        <p class="hero-subtitle">AMAZING Online — твоя вторая жизнь</p>
+        <p class="hero-tagline">Открытый мир · RolePlay · 10 000+ игроков</p>
+    </section>
+
+    <!-- Секция с текстом -->
+    <section class="section about">
+        <h2 class="section-title">Что такое AMAZING Online</h2>
+
+        <div class="about-grid">
+            <div class="about-card visible">
+                <div class="card-icon">🌍</div>
+                <h3>Открытый мир</h3>
+                <p>Российская провинция: знакомые дворы, панельки, трассы и города. Свободно перемещайся, исследуй, живи.</p>
+            </div>
+            <div class="about-card visible">
+                <div class="card-icon">🎭</div>
+                <h3>RolePlay</h3>
+                <p>Выбери, кем быть: полицейский, врач, дальнобойщик, бизнесмен или криминальный авторитет. Всё решаешь ты.</p>
+            </div>
+            <div class="about-card visible">
+                <div class="card-icon">🎙️</div>
+                <h3>Голосовой чат</h3>
+                <p>Общайся с другими игроками в реальном времени. Строй отношения, создавай банды, живи свою историю.</p>
+            </div>
+            <div class="about-card visible">
+                <div class="card-icon">🚗</div>
+                <h3>Автопарк</h3>
+                <p>Отечественные и иностранные машины. Тюнингуй, ремонтируй, участвуй в гонках и зарабатывай на перевозках.</p>
+            </div>
+            <div class="about-card visible">
+                <div class="card-icon">💼</div>
+                <h3>Работы и бизнес</h3>
+                <p>От уборщика улиц до владельца автосервиса. Работай, копи, открывай своё дело и становись богаче.</p>
+            </div>
+            <div class="about-card visible">
+                <div class="card-icon">🏛️</div>
+                <h3>Госструктуры</h3>
+                <p>ДПС, ППС, ЕСС, ФСБ, ФСИН — стань частью системы и следи за порядком в мире AMAZING.</p>
+            </div>
+        </div>
+
+        <div style="max-width: 900px; margin: 80px auto 0; text-align: center;">
+            <h2 class="section-title">Начни свою историю</h2>
+            <p style="font-size: 18px; color: #b0b0c0; line-height: 1.8; margin-bottom: 40px;">
+                AMAZING Online — это не просто игра. Это мир, где ты сам решаешь, кем стать,
+                с кем дружить и как прожить свою вторую жизнь. Тысячи игроков онлайн прямо сейчас.
+                Присоединяйся.
+            </p>
+            <button class="btn-primary btn-large" onclick="window.location.href='index.html#start'">
+                Начать играть
+            </button>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-logo">AMAZING ONLINE</div>
+            <div class="footer-links">
+                <a href="https://amazing-online.com/rules/1-atmosfera" target="_blank" rel="noopener">Правила</a>
+                <a href="https://amazing-online.com/help/technical" target="_blank" rel="noopener">Поддержка</a>
+                <a href="https://forum.amazing-online.com/" target="_blank" rel="noopener">Форум</a>
+                <a href="https://vk.com/amazingonline" target="_blank" rel="noopener">ВКонтакте</a>
+            </div>
+            <div class="footer-copy">© 2026 AMAZING.GG</div>
+        </div>
+    </footer>
+
+    <script src="particles.js"></script>
+    <script src="parallax.js"></script>
+    <script>
+        // Курсор
+        const cursor = document.querySelector('.custom-cursor');
+        const cursorDot = document.querySelector('.custom-cursor-dot');
+        if (cursor && cursorDot) {
+            let cx = 0, cy = 0, dx = 0, dy = 0;
+            document.addEventListener('mousemove', (e) => { cx = e.clientX; cy = e.clientY; });
+            (function animate() {
+                dx += (cx - dx) * 0.9;
+                dy += (cy - dy) * 0.9;
+                cursor.style.transform = `translate(${cx - 20}px, ${cy - 20}px)`;
+                cursorDot.style.transform = `translate(${dx - 3}px, ${dy - 3}px)`;
+                requestAnimationFrame(animate);
+            })();
+        }
+    </script>
+
+</body>
+</html>
