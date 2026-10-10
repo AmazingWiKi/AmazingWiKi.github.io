@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AMAZING Online — атмосферная онлайн-игра про современную Россию. Открытый мир, RolePlay, тысячи игроков.">
+    <title>AMAZING Online — Играй в свою жизнь</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+<body>
+
+    <!-- Канвас для частиц -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- Слой параллакса: звёзды -->
+    <div class="parallax-layer" data-speed="0.2"></div>
+    <div class="parallax-layer" data-speed="0.5"></div>
+    <div class="parallax-layer" data-speed="0.8"></div>
+
+    <!-- Прелоадер -->
+    <div id="preloader">
+        <div class="loader-ring"></div>
+        <div class="loader-text">AMAZING</div>
+    </div>
+
+    <!-- Курсор -->
+    <div class="custom-cursor"></div>
+    <div class="custom-cursor-dot"></div>
+
+    <!-- Навигация -->
+    <header class="main-header">
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="AMAZING Online">
+        </div>
+        <nav>
+            <a href="#about">Об игре</a>
+            <a href="#servers">Сервера</a>
+            <a href="#jobs">Работы</a>
+            <a href="#start">Начать играть</a>
+        </nav>
+    </header>
+
+    <!-- Hero-секция -->
+    <section class="hero">
+        <h1 class="hero-title" data-text="AMAZING">AMAZING</h1>
+        <p class="hero-subtitle">Онлайн-игра про современную Россию</p>
+        <p class="hero-tagline">Открытый мир · RolePlay · 10 000+ игроков</p>
+
+        <div class="hero-buttons">
+            <button class="btn-primary" onclick="scrollToSection('start')">
+                Скачать и играть
+            </button>
+            <button class="btn-secondary" onclick="scrollToSection('about')">
+                Узнать больше
+            </button>
+        </div>
+
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-number" data-target="10898">0</span>
+                <span class="stat-label">Игроков онлайн</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number" data-target="12">0</span>
+                <span class="stat-label">Серверов</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number" data-target="11">0</span>
+                <span class="stat-label">Лет проекту</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "Об игре" -->
+    <section id="about" class="section about">
+        <h2 class="section-title">Об игре</h2>
+        <div class="about-grid">
+            <div class="about-card" data-delay="0">
+                <div class="card-icon">🌍</div>
+                <h3>Открытый мир</h3>
+                <p>Российские города и деревни. Знакомые дворы, панельки, отечественные и иностранные автомобили.</p>
+            </div>
+            <div class="about-card" data-delay="200">
+                <div class="card-icon">🎭</div>
+                <h3>RolePlay</h3>
+                <p>Выбери свою роль: полицейский, врач, дальнобойщик, бизнесмен или криминальный авторитет.</p>
+            </div>
+            <div class="about-card" data-delay="400">
+                <div class="card-icon">🎙️</div>
+                <h3>Голосовой чат</h3>
+                <p>Общайся с другими игроками в реальном времени. Строй отношения, создавай банды, живи свою жизнь.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "Сервера" -->
+    <section id="servers" class="section servers">
+        <h2 class="section-title">Сервера</h2>
+        <div class="servers-grid" id="servers-grid">
+            <!-- Генерируется через JS -->
+        </div>
+    </section>
+
+    <!-- Секция "Работы" -->
+    <section id="jobs" class="section jobs">
+        <h2 class="section-title">Работы и профессии</h2>
+        <div class="jobs-slider" id="jobs-slider">
+            <!-- Генерируется через JS -->
+        </div>
+    </section>
+
+    <!-- Секция "Начать играть" -->
+    <section id="start" class="section start">
+        <h2 class="section-title">Начать играть</h2>
+        <div class="start-steps">
+            <div class="step">
+                <span class="step-number">01</span>
+                <h3>Скачай лаунчер</h3>
+                <p>Загрузи игру с официального сайта. Лаунчер сделает всё за тебя.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">02</span>
+                <h3>Придумай персонажа</h3>
+                <p>Введи имя и фамилию персонажа, выбери сервер и заходи в игру.</p>
+            </div>
+            <div class="step">
+                <span class="step-number">03</span>
+                <h3>Выбери путь</h3>
+                <p>Стань полицейским, бизнесменом или криминальным авторитетом.</p>
+            </div>
+        </div>
+        <button class="btn-primary btn-large" onclick="window.open('https://amazing-online.com', '_blank')">
+            Скачать AMAZING Online
+        </button>
+    </section>
+
+    <!-- Футер -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-logo">AMAZING ONLINE</div>
+            <div class="footer-links">
+                <a href="#">Правила</a>
+                <a href="#">Поддержка</a>
+                <a href="#">Форум</a>
+                <a href="#">ВКонтакте</a>
+            </div>
+            <div class="footer-copy">© 2026 AMAZING.GG</div>
+        </div>
+    </footer>
+
+    <script src="particles.js"></script>
+    <script src="parallax.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
