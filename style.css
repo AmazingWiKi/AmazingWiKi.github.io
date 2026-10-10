@@ -258,7 +258,6 @@ body {
     50% { background-position: 100% 50%; }
 }
 
-/* Уезжает вправо → исчезает → появляется слева → возвращается */
 @keyframes scrollTitle {
     0%   { transform: translateX(0);     opacity: 1; }
     40%  { transform: translateX(0);     opacity: 1; }
@@ -337,10 +336,14 @@ body {
     transform: translateY(-5px);
 }
 
+/* ============================================
+   БОЛЬШАЯ КНОПКА —ПО ЦЕНТРУ
+   ============================================ */
 .btn-large {
     padding: 22px 60px;
     font-size: 19px;
-    margin-top: 40px;
+    margin: 40px auto 0;
+    display: block;
 }
 
 /* ============================================
@@ -520,7 +523,7 @@ body {
 
 @keyframes pulseOnline {
     0%, 100% { box-shadow: 0 0 6px rgba(61, 220, 132, 0.6); }
-    50%      {box-shadow: 0 0 16px rgba(61, 220, 132, 1); }
+    50%      { box-shadow: 0 0 16px rgba(61, 220, 132, 1); }
 }
 
 /* ============================================
@@ -609,8 +612,12 @@ body {
 }
 
 /* ============================================
-   НАЧАТЬ ИГРАТЬ
+   НАЧАТЬ ИГРАТЬ — ВСЁ ПО ЦЕНТРУ
    ============================================ */
+.start {
+    text-align: center;
+}
+
 .start-steps {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -709,7 +716,7 @@ body {
 /* ============================================
    АДАПТИВ
    ============================================ */
-max-width: 768px {
+@media (max-width: 768px) {
     .main-header {
         padding: 15px 20px;
     }
