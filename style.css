@@ -183,6 +183,25 @@ body {
     transform: scale(1.1);
 }
 
+/* ✅ ТЕКСТОВЫЙ ЛОГОТИП */
+.logo-text {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-3));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.logo-text:hover {
+    transform: scale(1.05);
+}
+
 .main-header nav {
     display: flex;
     gap: 40px;
@@ -305,7 +324,6 @@ body {
     width: 100%;
 }
 
-
 .btn-primary, .btn-secondary {
     padding: 18px 48px;
     border: none;
@@ -342,7 +360,7 @@ body {
 }
 
 /* ============================================
-   БОЛЬШАЯ КНОПКА —ПО ЦЕНТРУ
+   БОЛЬШАЯ КНОПКА — ПО ЦЕНТРУ
    ============================================ */
 .btn-large {
     padding: 22px 60px;
@@ -690,8 +708,7 @@ body {
     font-size: 22px;
     font-weight: 900;
     letter-spacing: 4px;
-    background: linear-gradient(135deg, var(--accent), var(--accent-3));
-    -webkit-background-clip: text;
+    background: linear-gradient(135deg, var(--accent), var(--accent-3));-webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -719,9 +736,9 @@ body {
 }
 
 /* ============================================
-   АДАПТИВ
+   АДАПТИВ — ✅ ИСПРАВЛЕНО
    ============================================ */
-@media (max-width: 768px) {
+max-width: 768px {
     .main-header {
         padding: 15px 20px;
     }
