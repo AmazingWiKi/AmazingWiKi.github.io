@@ -738,49 +738,249 @@ body {
 /* ============================================
    АДАПТИВ — ✅ ИСПРАВЛЕНО
    ============================================ */
-max-width: 768px {
+/* ============================================
+   АДАПТИВ — ПЛАНШЕТЫ
+   ============================================ */
+max-width: 1024px {
     .main-header {
-        padding: 15px 20px;
+        padding: 15px 30px;
+    }
+
+    .main-header nav {
+        gap: 25px;
+    }
+
+    .main-header nav a {
+        font-size: 14px;
+    }
+
+    .section {
+        padding: 100px 40px;
+    }
+
+    .servers-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .jobs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ============================================
+   АДАПТИВ — ТЕЛЕФОНЫ
+   ============================================ */
+max-width: 768px {
+
+    /* ХЕДЕР */
+    .main-header {
+        padding: 12px 16px;
     }
 
     .main-header nav {
         display: none;
     }
 
-    .hero-stats {
-        flex-direction: column;
-        gap: 30px;
+    .logo-text {
+        font-size: 18px;
+        letter-spacing: 2px;
     }
 
+    /* HERO */
+    .hero {
+        padding: 90px 16px 60px;
+        min-height: auto;
+    }
+
+    .hero-title {
+        font-size: clamp(40px, 14vw, 80px);
+        letter-spacing: 3px;
+    }
+
+    .hero-subtitle {
+        font-size: clamp(16px, 4.5vw, 22px);
+        letter-spacing: 2px;
+    }
+
+    .hero-tagline {
+        font-size: 13px;
+        letter-spacing: 1px;
+    }
+
+    /* КНОПКИ */
     .hero-buttons {
         flex-direction: column;
+        gap: 14px;
+        margin-top: 35px;
+        width: 100%;
+        padding: 0 10px;
     }
 
-    .section {
-        padding: 80px 20px;
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 320px;
+        padding: 16px 30px;
+        font-size: 15px;
     }
 
-    .servers-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+    .btn-large {
+        padding: 18px 40px;
+        font-size: 16px;
+        max-width: 320px;
     }
 
-    .server-name {
-        font-size: 20px;
-    }
-
-    .jobs-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .jobs-subtitle {
-        font-size: 20px;
+    /* СТАТИСТИКА */
+    .hero-stats {
+        flex-direction: column;
+        gap: 25px;
+        margin-top: 50px;
     }
 
     .stat-number {
         font-size: 36px;
     }
-}
+
+    .stat-label {
+        font-size: 12px;
+    }
+
+    /* СЕКЦИИ */
+    .section {
+        padding: 70px 16px;
+    }
+
+    .section-title {
+        font-size: clamp(28px, 8vw, 42px);
+        margin-bottom: 40px;
+    }
+
+    /* ОБ ИГРЕ */
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .about-card {
+        padding: 30px 24px;
+        border-radius: 18px;
+    }
+
+    .card-icon {
+        font-size: 38px;
+        margin-bottom: 16px;
+    }
+
+    .about-card h3 {
+        font-size: 20px;
+    }
+
+    .about-card p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* СЕРВЕРА */
+    .servers-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .server-card {
+        padding: 18px 14px;
+        border-radius: 14px;
+    }
+
+    .server-name {
+        font-size: 18px;
+        letter-spacing: 2px;
+    }
+
+    .server-status {
+        font-size: 12px;
+        gap: 6px;
+    }
+
+    .status-dot {
+        width: 8px;
+        height: 8px;
+    }
+
+    /* РАБОТЫ */
+    .jobs-subtitle {
+        font-size: 20px;
+        margin: 30px 0 20px;
+    }
+
+    .jobs-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .job-card {
+        padding: 24px 20px;
+        border-radius: 16px;
+    }
+
+    .job-icon {
+        font-size: 34px;
+        margin-bottom: 12px;
+    }
+
+    .job-card h3 {
+        font-size: 18px;
+        margin-bottom: 8px;
+    }
+
+    .job-card p {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    /* НАЧАТЬ ИГРАТЬ */
+    .start-steps {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .step {
+        padding: 28px 22px;
+        border-radius: 16px;
+    }
+
+    .step-number {
+        font-size: 34px;
+    }
+
+    .step h3 {
+        font-size: 18px;
+    }
+
+    .step p {
+        font-size: 13px;
+    }
+
+    /* ГАЛЕРЕЯ */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .gallery-item {
+        border-radius: 14px;
+    }
+
+    /* ФУТЕР */
+    .main-footer {
+        padding: 40px 16px 25px;
+    }
+
+    .footer-logo {
+        font-size: 18
 /* ============================================
    ГАЛЕРЕЯ — 3 СЛЕВА + 3 СПРАВА
    ============================================ */
