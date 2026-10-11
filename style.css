@@ -980,7 +980,51 @@ max-width: 768px {
     }
 
     .footer-logo {
-        font-size: 18
+        font-size: 18px;
+        letter-spacing: 3px;
+    }
+
+    .footer-links {
+        gap: 16px;
+    }
+
+    .footer-links a {
+        font-size: 13px;
+    }
+
+    .footer-copy {
+        font-size: 11px;
+    }
+}
+
+/* ============================================
+   АДАПТИВ — МАЛЕНЬКИЕ ТЕЛЕФОНЫ
+   ============================================ */
+max-width: 400px {
+    .hero-title {
+        font-size: 36px;
+        letter-spacing: 2px;
+    }
+
+    .servers-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .server-name {
+        font-size: 20px;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-large {
+        font-size: 14px;
+        padding: 14px 24px;
+    }
+
+    .section-title {
+        font-size: 26px;
+    }
+}
 /* ============================================
    ГАЛЕРЕЯ — 3 СЛЕВА + 3 СПРАВА
    ============================================ */
